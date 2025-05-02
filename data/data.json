@@ -1,0 +1,481 @@
+{
+  "users": [
+    { "id": "1", "name": "admin", "password": "1234" },
+    { "id": "2", "name": "test1", "password": "1234" },
+    { "id": "3", "name": "test2", "password": "1234" }
+  ],
+  "capsule": [
+    {
+      "id": "1",
+      "owner": "admin",
+      "private": false,
+      "title": "first capsule",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.01 05:00:00"
+    },
+    {
+      "id": "2",
+      "owner": "admin",
+      "private": false,
+      "title": "second capsule",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "3",
+      "owner": "admin",
+      "private": false,
+      "title": "third capsule",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "4",
+      "owner": "admin",
+      "private": false,
+      "title": "fourth capsule",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "5",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "6",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "6",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "7",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "8",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "9",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "10",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "11",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "12",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "13",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "14",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "15",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "16",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "17",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "18",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "19",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "20",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "21",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "22",
+      "owner": "test1",
+      "private": false,
+      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
+      "dateCreate": "2025.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "23",
+      "owner": "test2",
+      "private": false,
+      "title": "(2) Пагинация и сортировка",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "24",
+      "owner": "test2",
+      "private": false,
+      "title": "(2) Пагинация и сортировка",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "25",
+      "owner": "test2",
+      "private": false,
+      "title": "(2) Пагинация и сортировка",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2025.05.03 05:00:00"
+    },
+    {
+      "id": "26",
+      "owner": "test2",
+      "private": false,
+      "title": "(3) Пагинация и сортировка",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.03 05:00:00"
+    },
+    {
+      "id": "27",
+      "owner": "test2",
+      "private": false,
+      "title": "(3) Пагинация и сортировка",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.03 05:00:00"
+    },
+    {
+      "id": "28",
+      "owner": "test2",
+      "private": false,
+      "title": "(3) Пагинация и сортировка",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.03 05:00:00"
+    },
+    {
+      "id": "29",
+      "owner": "test2",
+      "private": false,
+      "title": "(3) Пагинация и сортировка",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.03 05:00:00"
+    },
+    {
+      "id": "30",
+      "owner": "test2",
+      "private": false,
+      "title": "(3) Пагинация и сортировка",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.03 05:00:00"
+    },
+    {
+      "id": "31",
+      "owner": "test2",
+      "private": false,
+      "title": "(3) Пагинация и сортировка",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.03 05:00:00"
+    },
+    {
+      "id": "32",
+      "owner": "test1",
+      "private": false,
+      "title": "(4) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.04 05:00:00"
+    },
+    {
+      "id": "33",
+      "owner": "test1",
+      "private": false,
+      "title": "(5) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.29 05:00:00"
+    },
+    {
+      "id": "34",
+      "owner": "test1",
+      "private": false,
+      "title": "(6) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.02 05:00:00"
+    },
+    {
+      "id": "35",
+      "owner": "test1",
+      "private": false,
+      "title": "(7) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.03 05:00:00"
+    },
+    {
+      "id": "36",
+      "owner": "test1",
+      "private": false,
+      "title": "(8) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.04 05:00:00"
+    },
+    {
+      "id": "37",
+      "owner": "test1",
+      "private": false,
+      "title": "(9) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.05 05:00:00"
+    },
+    {
+      "id": "38",
+      "owner": "test1",
+      "private": false,
+      "title": "(10) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.06 05:00:00"
+    },
+    {
+      "id": "39",
+      "owner": "test1",
+      "private": false,
+      "title": "(11) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.07 05:00:00"
+    },
+    {
+      "id": "40",
+      "owner": "test1",
+      "private": false,
+      "title": "(12) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.08 05:00:00"
+    },
+    {
+      "id": "41",
+      "owner": "test1",
+      "private": false,
+      "title": "(13) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.09 05:00:00"
+    },
+    {
+      "id": "42",
+      "owner": "test1",
+      "private": false,
+      "title": "(14) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.10 05:00:00"
+    },
+    {
+      "id": "43",
+      "owner": "test1",
+      "private": false,
+      "title": "(15) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.11 05:00:00"
+    },
+    {
+      "id": "44",
+      "owner": "test1",
+      "private": false,
+      "title": "(16) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.12 05:00:00"
+    },
+    {
+      "id": "45",
+      "owner": "test1",
+      "private": false,
+      "title": "(17) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.13 05:00:00"
+    },
+    {
+      "id": "46",
+      "owner": "test1",
+      "private": false,
+      "title": "(18) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.14 05:00:00"
+    },
+    {
+      "id": "47",
+      "owner": "test1",
+      "private": false,
+      "title": "(19) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.15 05:00:00"
+    },
+    {
+      "id": "48",
+      "owner": "test1",
+      "private": false,
+      "title": "(20) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.16 05:00:00"
+    },
+    {
+      "id": "49",
+      "owner": "test1",
+      "private": false,
+      "title": "(21) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.17 05:00:00"
+    },
+    {
+      "id": "50",
+      "owner": "test1",
+      "private": false,
+      "title": "(22) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.18 05:00:00"
+    },
+    {
+      "id": "51",
+      "owner": "test1",
+      "private": false,
+      "title": "(23) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.19 05:00:00"
+    },
+    {
+      "id": "52",
+      "owner": "test1",
+      "private": false,
+      "title": "(24) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.20 05:00:00"
+    },
+    {
+      "id": "53",
+      "owner": "test1",
+      "private": false,
+      "title": "(25) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.21 05:00:00"
+    },
+    {
+      "id": "54",
+      "owner": "test1",
+      "private": false,
+      "title": "(26) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.22 05:00:00"
+    },
+    {
+      "id": "55",
+      "owner": "test1",
+      "private": false,
+      "title": "(27) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.23 05:00:00"
+    },
+    {
+      "id": "56",
+      "owner": "test1",
+      "private": false,
+      "title": "(28) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.24 05:00:00"
+    },
+    {
+      "id": "57",
+      "owner": "test1",
+      "private": false,
+      "title": "(29) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.25 05:00:00"
+    },
+    {
+      "id": "58",
+      "owner": "test1",
+      "private": false,
+      "title": "(30) Проверка открытия капсулы",
+      "dateCreate": "2024.05.01 00:00:00",
+      "dateOpen": "2030.05.26 05:00:00"
+    }
+  ]
+}
