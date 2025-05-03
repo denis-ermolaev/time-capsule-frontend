@@ -27,7 +27,7 @@ function MainInterface() {
       <CssBaseline />
       <AppBar
         position="fixed"
-        open={gContext.openDrawer}
+        open={Boolean(gContext.openDrawer)}
         className={`navmenu ${gContext.trigger ? "plusopacity" : ""}`}
       >
         <Toolbar>
@@ -87,58 +87,123 @@ function MainInterface() {
         anchor="left"
         open={gContext.openDrawer}
       >
-        <DrawerHeader>
+        <DrawerHeader sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography>Меню фильтрации</Typography>
           <Button onClick={() => gContext.handleDrawerClose()}>Закрыть</Button>
         </DrawerHeader>
         <List>
-          {[
-            "Капсулы которые открываются сегодня",
-            "Капсулы которые открываются на этой недели",
-            "Капсулы которые открываются в этом месяце",
-          ].map((text) => (
-            <>
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-              <Divider />
-            </>
-          ))}
-          <p>Капсула, созданная в пределах этих дат:</p>
-          <div style={{ display: "flex" }}>
-            <Input id="standard-adornment-password" type="date"></Input>
-            <p style={{ marginLeft: "10px", marginRight: "10px" }}> - </p>
-            <Input id="standard-adornment-password" type="date"></Input>
-          </div>
-          <Divider style={{ marginTop: "10px" }} />
-          <p>Капсула, которая открывается в пределах этих дат:</p>
-          <div style={{ display: "flex" }}>
-            <Input id="standard-adornment-password" type="date"></Input>
-            <p style={{ marginLeft: "10px", marginRight: "10px" }}> - </p>
-            <Input id="standard-adornment-password" type="date"></Input>
-          </div>
-          <Divider style={{ marginTop: "10px" }} />
-          <div style={{ display: "flex", justifyContent: "space-around" }}>
-            <p>Поиск по</p>
+          <ListItem key={"Капсулы которые открываются сегодня"} disablePadding>
+            <ListItemButton
+              className={
+                gContext.filtrationOpenCapsules === "day" ? "activeButton" : ""
+              }
+              onClick={() => {
+                gContext.setFiltrationOpenCapsules((prev) => {
+                  if (prev === "day") {
+                    return null;
+                  } else {
+                    return "day";
+                  }
+                });
+              }}
+            >
+              <ListItemText primary={"Капсулы которые открываются сегодня"} />
+            </ListItemButton>
+          </ListItem>
+          <Divider />
+          <ListItem
+            key={"Капсулы которые открываются на этой недели"}
+            disablePadding
+          >
+            <ListItemButton
+              className={
+                gContext.filtrationOpenCapsules === "week" ? "activeButton" : ""
+              }
+              onClick={() => {
+                gContext.setFiltrationOpenCapsules((prev) => {
+                  if (prev === "week") {
+                    return null;
+                  } else {
+                    return "week";
+                  }
+                });
+              }}
+            >
+              <ListItemText
+                primary={"Капсулы которые открываются на этой недели"}
+              />
+            </ListItemButton>
+          </ListItem>
+          <Divider />
+          <ListItem
+            key={"Капсулы которые открываются в этом месяце"}
+            disablePadding
+          >
+            <ListItemButton
+              className={
+                gContext.filtrationOpenCapsules === "month"
+                  ? "activeButton"
+                  : ""
+              }
+              onClick={() => {
+                gContext.setFiltrationOpenCapsules((prev) => {
+                  if (prev === "month") {
+                    return null;
+                  } else {
+                    return "month";
+                  }
+                });
+              }}
+            >
+              <ListItemText
+                primary={"Капсулы которые открываются в этом месяце"}
+              />
+            </ListItemButton>
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <p>Капсула, созданная в пределах этих дат:</p>
+          </ListItem>
+          <ListItem>
+            <div style={{ display: "flex" }}>
+              <Input id="standard-adornment-password" type="date"></Input>
+              <p style={{ marginLeft: "10px", marginRight: "10px" }}> - </p>
+              <Input id="standard-adornment-password" type="date"></Input>
+            </div>
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <p>Капсула, которая открывается в пределах этих дат:</p>
+          </ListItem>
+          <ListItem>
+            <div style={{ display: "flex" }}>
+              <Input id="standard-adornment-password" type="date"></Input>
+              <p style={{ marginLeft: "10px", marginRight: "10px" }}> - </p>
+              <Input id="standard-adornment-password" type="date"></Input>
+            </div>
+          </ListItem>
+          <Divider />
+          <ListItem sx={{ marginTop: "10px" }}>
             <Autocomplete
               disablePortal
-              sx={{ width: "250px" }}
-              options={[
-                "По имени",
-                "По id",
-                "По дате создания",
-                "По дате открытия",
-              ]}
-              renderInput={(params) => <TextField {...params} label="Movie" />}
+              size="small"
+              sx={{ width: "200px", marginRight: "auto" }}
+              options={["имени", "id", "дате создания", "дате открытия"]}
+              renderInput={(params) => (
+                <TextField {...params} label="Поиск по" />
+              )}
             />
-          </div>
-          <Input
-            id="standard-adornment-password"
-            type="search"
-            placeholder="поиск"
-          ></Input>
-          <Button>Искать</Button>
+          </ListItem>
+          <ListItem>
+            <TextField
+              id="standard-adornment-password"
+              type="search"
+              fullWidth
+              size="small"
+              variant="outlined"
+            />
+            <Button>Найти</Button>
+          </ListItem>
         </List>
       </Drawer>
     </>

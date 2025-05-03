@@ -24,7 +24,7 @@ export default function App() {
     pageDraw = (
       <Backdrop
         sx={(theme) => ({ color: "#fff", zIndex: theme.zIndex.drawer + 1 })}
-        open={open}
+        open={Boolean(open)}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
@@ -35,7 +35,7 @@ export default function App() {
     pageDraw = (
       <Box sx={{ display: "flex" }}>
         <MainInterface />
-        <Main open={gContext.openDrawer}>
+        <Main open={Boolean(gContext.openDrawer)}>
           <DrawerHeader />
           <MainContent />
           <Dialog />

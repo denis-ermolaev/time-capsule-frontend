@@ -72,24 +72,21 @@ export default function EnhancedTable() {
   async function getAllCount() {
     console.log("!gContext.value", !gContext.value);
     const sigh = order === "asc" ? "" : "-";
-    let res;
+    let url;
     if (gContext.value) {
-      res = await fetch(
-        `http://localhost:9000/capsule?private_ne=${Boolean(
-          gContext.value
-        )}&_sort=${sigh}${orderBy}&_page=${gContext.page + 1}&_per_page=${
-          gContext.rowsPerPage
-        }`
-      );
+      url = `http://localhost:9000/capsule?&private_ne=${Boolean(
+        gContext.value
+      )}&_sort=${sigh}${orderBy}&_page=${gContext.page + 1}&_per_page=${
+        gContext.rowsPerPage
+      }`;
     } else {
-      res = await fetch(
-        `http://localhost:9000/capsule?owner=${
-          gContext.accountLogin.userName
-        }&&_sort=${sigh}${orderBy}&_page=${gContext.page + 1}&_per_page=${
-          gContext.rowsPerPage
-        }`
-      );
+      url = `http://localhost:9000/capsule?owner=${
+        gContext.accountLogin.userName
+      }&&_sort=${sigh}${orderBy}&_page=${gContext.page + 1}&_per_page=${
+        gContext.rowsPerPage
+      }`;
     }
+    let res = await fetch(url);
     res = await res.json();
     gContext.setCountPagination(res.pages * gContext.rowsPerPage);
     gContext.setListCapsules(res.data);

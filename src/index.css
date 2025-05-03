@@ -6,7 +6,7 @@ body {
 }
 
 .main {
-  width: 60%;
+  width: 60vw;
   margin-left: auto;
   margin-right: auto;
 }
@@ -46,4 +46,14 @@ body {
 .CapsuleListContainer > a > p {
   display: inline;
   margin: 4px;
+}
+
+.activeButton {
+  opacity: 60%;
+}
+
+.CapsuleListContainer > div > div {
+  all: revert;
+  --Paper-shadow: none;
+  --Paper-overlay: none;
 }

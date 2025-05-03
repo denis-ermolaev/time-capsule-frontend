@@ -119,6 +119,11 @@ export function ContextGLOBAL({ children }) {
   const [countPagination, setCountPagination] = useState(0);
   const [dateNow, setDateNow] = useState(getCurrentTimeFormat());
 
+  //Используется для фильтрации по, отрывающиеся капсулы сегодня
+  //На этой недели или в этом месяце
+  // day week month
+  const [filtrationOpenCapsules, setFiltrationOpenCapsules] = useState(null);
+
   useEffect(() => {
     setInterval(() => setDateNow(getCurrentTimeFormat()), 1000);
   }, []);
@@ -223,6 +228,8 @@ export function ContextGLOBAL({ children }) {
         setListCapsules,
         updateCapsuleTabs,
         setUpdateCapsuleTabs,
+        filtrationOpenCapsules,
+        setFiltrationOpenCapsules,
       }}
     >
       {children}
