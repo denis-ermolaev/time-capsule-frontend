@@ -19,7 +19,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 export default function App() {
   const gContext = useContext(globalContext);
   let pageDraw;
-  if (["loading", "try"].includes(gContext.accountLogin.status)) {
+  if (["FirstLoading Try"].includes(gContext.accountLogin.status)) {
+    // console.log("App", gContext.accountLogin.status);
     pageDraw = (
       <Backdrop
         sx={(theme) => ({ color: "#fff", zIndex: theme.zIndex.drawer + 1 })}
@@ -29,6 +30,7 @@ export default function App() {
       </Backdrop>
     );
   } else {
+    // console.log("App", gContext.accountLogin.status);
     // if (gContext.accountLogin.status === "NotAuth")
     pageDraw = (
       <Box sx={{ display: "flex" }}>

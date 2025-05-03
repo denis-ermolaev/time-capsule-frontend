@@ -18,6 +18,10 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 function MainInterface() {
   const gContext = useContext(globalContext);
+  // console.log("MainInterface", gContext.accountLogin.status);
+  function logOut() {
+    gContext.dispatchAccountLogin({ type: "log out" });
+  }
   return (
     <>
       <CssBaseline />
@@ -29,6 +33,7 @@ function MainInterface() {
         <Toolbar>
           <Button
             color="inherit"
+            disabled={gContext.accountLogin.status === "Auth" ? false : true}
             aria-label="open drawer"
             onClick={gContext.handleDrawerOpen}
             sx={[
@@ -54,9 +59,18 @@ function MainInterface() {
           >
             {gContext.dateNow}
           </Typography>
-          <Button color="inherit" onClick={gContext.openDialogLogin}>
-            Login
-          </Button>
+          {gContext.accountLogin.status === "Auth" ? (
+            <>
+              <p>Привет {gContext.accountLogin.userName}</p>
+              <Button color="inherit" onClick={logOut}>
+                Выйти
+              </Button>
+            </>
+          ) : (
+            <Button color="inherit" onClick={gContext.openDialogLogin}>
+              Login
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
       <Drawer

@@ -1,8 +1,25 @@
 {
   "users": [
-    { "id": "1", "name": "admin", "password": "1234" },
-    { "id": "2", "name": "test1", "password": "1234" },
-    { "id": "3", "name": "test2", "password": "1234" }
+    {
+      "id": "1",
+      "name": "admin",
+      "password": "1234"
+    },
+    {
+      "id": "2",
+      "name": "test1",
+      "password": "1234"
+    },
+    {
+      "id": "3",
+      "name": "test2",
+      "password": "1234"
+    },
+    {
+      "id": "9743",
+      "name": "millennium",
+      "password": "1234"
+    }
   ],
   "capsule": [
     {
@@ -34,158 +51,6 @@
       "owner": "admin",
       "private": false,
       "title": "fourth capsule",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "5",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "6",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "6",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "7",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "8",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "9",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "10",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "11",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "12",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "13",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "14",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "15",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "16",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "17",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "18",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "19",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "20",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "21",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
-      "dateCreate": "2025.05.01 00:00:00",
-      "dateOpen": "2025.05.03 05:00:00"
-    },
-    {
-      "id": "22",
-      "owner": "test1",
-      "private": false,
-      "title": "(1) Тестовая капсула для проверки пагинации от test1 user",
       "dateCreate": "2025.05.01 00:00:00",
       "dateOpen": "2025.05.03 05:00:00"
     },
@@ -476,6 +341,54 @@
       "title": "(30) Проверка открытия капсулы",
       "dateCreate": "2024.05.01 00:00:00",
       "dateOpen": "2030.05.26 05:00:00"
+    },
+    {
+      "id": "59",
+      "owner": "test1",
+      "private": false,
+      "title": "А - капсула",
+      "dateCreate": "2020.05.01 00:00:00",
+      "dateOpen": "2040.05.26 05:00:00"
+    },
+    {
+      "id": "60",
+      "owner": "test1",
+      "private": false,
+      "title": "Б - капсула",
+      "dateCreate": "2010.05.01 00:00:00",
+      "dateOpen": "2050.05.26 05:00:00"
+    },
+    {
+      "id": "61",
+      "owner": "test1",
+      "private": false,
+      "title": "Я - капсула",
+      "dateCreate": "2000.05.01 00:00:00",
+      "dateOpen": "2060.05.26 05:00:00"
+    },
+    {
+      "id": "13a8",
+      "owner": "millennium",
+      "private": true,
+      "title": "Моя первая капсула",
+      "dateCreate": "2025.05.03 20:15:57",
+      "dateOpen": "2025.05-22 20:15:00"
+    },
+    {
+      "id": "040f",
+      "owner": "millennium",
+      "private": true,
+      "title": "Моя вторая капсула",
+      "dateCreate": "2025.05.03 20:18:29",
+      "dateOpen": "2025.05-30 20:18:00"
+    },
+    {
+      "id": "d85a",
+      "owner": "millennium",
+      "private": true,
+      "title": "Моя третья капсула",
+      "dateCreate": "2025.05.03 20:18:43",
+      "dateOpen": "2025.04-29 20:18:00"
     }
   ]
 }

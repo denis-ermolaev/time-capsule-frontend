@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 
 import useScrollTrigger from "@mui/material/useScrollTrigger";
@@ -14,15 +15,13 @@ const AccountLoginInitial = {
   userName: localStorage.getItem("userName"),
   password: localStorage.getItem("password"),
   isLogin: false,
-  status: "try",
+  status: "FirstLoading Try",
 };
 function reducerAccountLogin(state, action) {
   console.log(action);
   switch (action.type) {
     case "authentication failed":
       return { ...state, status: "NotAuth" };
-    case "try":
-      return { ...state, status: "loading" };
     case "authentication success":
       localStorage.setItem("userName", action.userName);
       localStorage.setItem("password", action.password);
@@ -39,11 +38,27 @@ function reducerAccountLogin(state, action) {
         userName: action.userName,
         password: action.password,
       };
+    case "log out":
+      localStorage.removeItem("userName");
+      localStorage.removeItem("password");
+      return {
+        ...state,
+        status: "NotAuth",
+        userName: null,
+        password: null,
+      };
+    case "Registration":
+      return {
+        ...state,
+        status: "Registration",
+        userName: action.userName,
+        password: action.password,
+      };
   }
 }
 export function ContextGLOBAL({ children }) {
   async function getData() {
-    dispatchAccountLogin({ type: "try" });
+    console.log(accountLogin.status);
     let res = await fetch(
       `http://localhost:9000/users?name=${accountLogin.userName}&${accountLogin.password}`
     );
@@ -51,7 +66,7 @@ export function ContextGLOBAL({ children }) {
     if (res.length === 0) {
       dispatchAccountLogin({ type: "authentication failed" });
       console.log("Не успешная аудентификация");
-    } else if (res.length === 1) {
+    } else if (res.length >= 1) {
       dispatchAccountLogin({
         type: "authentication success",
         userName: accountLogin.userName,
@@ -63,18 +78,45 @@ export function ContextGLOBAL({ children }) {
       console.log("Не успешная аудентификация");
     }
   }
+  async function fetchRegistration() {
+    let res = await fetch(`http://localhost:9000/users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify({
+        name: accountLogin.userName,
+        password: accountLogin.password,
+      }),
+    });
+    res = await res.json();
+    if (res.length !== 0) {
+      dispatchAccountLogin({
+        type: "change authentication",
+        userName: accountLogin.userName,
+        password: accountLogin.password,
+      });
+    }
+  }
   const [accountLogin, dispatchAccountLogin] = useReducer(
     reducerAccountLogin,
     AccountLoginInitial
   );
   useEffect(() => {
-    if (accountLogin.status === "try") {
+    if (
+      accountLogin.status === "FirstLoading Try" ||
+      accountLogin.status === "try"
+    ) {
       getData();
+    } else if (accountLogin.status === "Registration") {
+      fetchRegistration();
     }
   }, [accountLogin.status]);
+  const [ListCapsules, setListCapsules] = useState([]);
 
-  const [page, setPage] = useState(2);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [countPagination, setCountPagination] = useState(0);
   const [dateNow, setDateNow] = useState(getCurrentTimeFormat());
 
   useEffect(() => {
@@ -91,6 +133,7 @@ export function ContextGLOBAL({ children }) {
   const [open, setOpen] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [value, setValue] = useState(0);
+  const [updateCapsuleTabs, setUpdateCapsuleTabs] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -105,6 +148,7 @@ export function ContextGLOBAL({ children }) {
     vertical: "top",
     horizontal: "center",
   });
+
   const { vertical, horizontal, openMessage } = state;
   const handleClickState = function (event, newState) {
     event.stopPropagation();
@@ -173,6 +217,12 @@ export function ContextGLOBAL({ children }) {
         handleDrawerClose,
         accountLogin,
         dispatchAccountLogin,
+        countPagination,
+        setCountPagination,
+        ListCapsules,
+        setListCapsules,
+        updateCapsuleTabs,
+        setUpdateCapsuleTabs,
       }}
     >
       {children}

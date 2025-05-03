@@ -3,10 +3,15 @@ import { useContext } from "react";
 
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Link from "@mui/material/Link";
 
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+
+import EnhancedTable from "./TableCont";
+
+// const [page, setPage] = useState(0);
+// const [rowsPerPage, setRowsPerPage] = useState(10);
+// const [countPagination, setCountPagination] = useState(0);
+
 function TabsCapsule() {
   const gContext = useContext(globalContext);
   return (
@@ -29,14 +34,7 @@ function TabsCapsule() {
       >
         {gContext.value === 0 && (
           <Box sx={{ p: 3 }}>
-            <p style={{ display: "inline" }}>Название капсулы</p>
-            <Button>По дате создания</Button>
-            <Button>По дате открытия</Button>
-            <Link href="#" underline="hover" style={{ display: "block" }}>
-              Вот условно капсула времени, она тогда будет отрисовываться не на
-              отдельном пути, а просто в всплывающем окне, там будет всё
-              взаимодействие с ней
-            </Link>
+            <div className="CapsuleListContainer">{<EnhancedTable />}</div>
           </Box>
         )}
       </div>
@@ -48,9 +46,7 @@ function TabsCapsule() {
       >
         {gContext.value === 1 && (
           <Box sx={{ p: 3 }}>
-            <p style={{ display: "inline" }}>Название капсулы</p>
-            <Button>По дате создания</Button>
-            <Button>По дате открытия</Button>
+            <div className="CapsuleListContainer">{<EnhancedTable />}</div>
           </Box>
         )}
       </div>
