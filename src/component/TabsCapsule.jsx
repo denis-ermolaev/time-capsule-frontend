@@ -45,7 +45,7 @@ function TabsCapsule() {
         aria-labelledby={`simple-tab-${1}`}
       >
         {gContext.value === 1 && (
-          <Box sx={{ p: 3 }}>
+          <Box sx={{ p: 0 }}>
             <div className="CapsuleListContainer">{<EnhancedTable />}</div>
           </Box>
         )}

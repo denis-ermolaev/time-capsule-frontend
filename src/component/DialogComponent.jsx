@@ -1,4 +1,5 @@
 import Dialog from "@mui/material/Dialog";
+
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
@@ -13,6 +14,11 @@ import { Typography } from "@mui/material";
 import Switch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { getCurrentTimeFormat } from "../utils/anyfun";
+
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import dayjs from "dayjs";
+
+const today = dayjs().add(0, "day");
 
 export default function DialogComponent() {
   const gContext = useContext(globalContext);
@@ -157,26 +163,13 @@ export default function DialogComponent() {
             type="text"
             fullWidth
             variant="standard"
-            slotProps={{
-              inputLabel: {
-                shrink: true,
-              },
-            }}
           />
-          <TextField
-            required
-            margin="dense"
-            id="dataOpen"
+          <DateTimePicker
             name="dataOpen"
-            label="Введите время открытия капсулы"
-            type="datetime-local"
-            fullWidth
-            variant="standard"
-            slotProps={{
-              inputLabel: {
-                shrink: true,
-              },
-            }}
+            sx={{ minWidth: "100%", marginTop: "10px", marginBottom: "10px" }}
+            slotProps={{ textField: { size: "small" } }}
+            label="Введите дату открытия"
+            defaultValue={today}
           />
           <Stack direction="row" spacing={1} sx={{ alignItems: "center" }}>
             <Typography>Приватная</Typography>

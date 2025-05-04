@@ -5,10 +5,26 @@ body {
   margin: 0px;
 }
 
-.main {
-  width: 60vw;
-  margin-left: auto;
-  margin-right: auto;
+@media (width > 1440px) {
+  .main {
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (768px <= width <= 1440px) {
+  .main {
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (width <= 768px) {
+  .main {
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .navmenu {
@@ -54,6 +70,11 @@ body {
 
 .CapsuleListContainer > div > div {
   all: revert;
-  --Paper-shadow: none;
-  --Paper-overlay: none;
+}
+
+.drawerMain > div {
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.092),
+    rgba(255, 255, 255, 0.092)
+  );
 }

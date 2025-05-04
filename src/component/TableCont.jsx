@@ -145,6 +145,14 @@ export default function EnhancedTable() {
                     tabIndex={-1}
                     key={row.id}
                     sx={{ cursor: "pointer" }}
+                    onClick={() =>
+                      console.log(
+                        row.id,
+                        row.title,
+                        row.dateCreate,
+                        row.dateOpen
+                      )
+                    }
                   >
                     <TableCell component="th" id={labelId} scope="row">
                       {row.title}

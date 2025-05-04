@@ -8,26 +8,35 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start:api": "json-server --watch data/data.json --port 9000"
+    "start:api": "json-server --watch data/data.json --port 9000",
+    "start-registry": "npx verdaccio"
   },
   "dependencies": {
-    "json-server": "^1.0.0-beta.3",
+    "@fontsource/roboto": "^5.2.5",
+    "@mui/icons-material": "^7.0.2",
+    "@mui/material": "^7.0.2",
+    "@mui/x-charts": "^8.2.0",
+    "@mui/x-data-grid": "^8.2.0",
+    "@mui/x-date-pickers": "^8.2.0",
+    "@mui/x-tree-view": "^8.2.0",
+    "dayjs": "^1.11.13",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@eslint/js": "^9.13.0",
+    "@mui/types": "^7.4.1",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
-    "@mui/types": "^7.4.1",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
     "eslint": "^9.13.0",
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.13",
     "globals": "^15.11.0",
+    "json-server": "^1.0.0-beta.3",
     "vite": "^5.4.9"
   }
 }

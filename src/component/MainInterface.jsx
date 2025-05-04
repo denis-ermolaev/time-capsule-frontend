@@ -7,7 +7,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
-import Input from "@mui/material/Input";
 import Divider from "@mui/material/Divider";
 
 import Autocomplete from "@mui/material/Autocomplete";
@@ -16,6 +15,14 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
+
 function MainInterface() {
   const gContext = useContext(globalContext);
   // console.log("MainInterface", gContext.accountLogin.status);
@@ -31,10 +38,11 @@ function MainInterface() {
         className={`navmenu ${gContext.trigger ? "plusopacity" : ""}`}
       >
         <Toolbar>
-          <Button
+          <IconButton
+            edge="start"
             color="inherit"
-            disabled={gContext.accountLogin.status === "Auth" ? false : true}
             aria-label="open drawer"
+            disabled={gContext.accountLogin.status === "Auth" ? false : true}
             onClick={gContext.handleDrawerOpen}
             sx={[
               {
@@ -43,8 +51,8 @@ function MainInterface() {
               gContext.openDrawer && { display: "none" },
             ]}
           >
-            Открыть
-          </Button>
+            <MenuIcon />
+          </IconButton>
           <Typography variant="h6" noWrap component="div">
             Time Capsule
           </Typography>
@@ -61,7 +69,7 @@ function MainInterface() {
           </Typography>
           {gContext.accountLogin.status === "Auth" ? (
             <>
-              <p>Привет {gContext.accountLogin.userName}</p>
+              <p>{gContext.accountLogin.userName}</p>
               <Button color="inherit" onClick={logOut}>
                 Выйти
               </Button>
@@ -87,9 +95,18 @@ function MainInterface() {
         anchor="left"
         open={gContext.openDrawer}
       >
-        <DrawerHeader sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography>Меню фильтрации</Typography>
-          <Button onClick={() => gContext.handleDrawerClose()}>Закрыть</Button>
+        <DrawerHeader sx={{ display: "flex" }}>
+          <FilterAltIcon />
+          <Typography
+            sx={{
+              flexGrow: "1",
+            }}
+          >
+            Фильтры
+          </Typography>
+          <IconButton onClick={() => gContext.handleDrawerClose()}>
+            <MenuOpenIcon />
+          </IconButton>
         </DrawerHeader>
         <List>
           <ListItem key={"Капсулы которые открываются сегодня"} disablePadding>
@@ -162,38 +179,71 @@ function MainInterface() {
           </ListItem>
           <Divider />
           <ListItem>
-            <p>Капсула, созданная в пределах этих дат:</p>
+            <p
+              style={{ marginTop: "0px", marginBottom: "0px", padding: "0px" }}
+            >
+              Капсула, созданная в пределах этих дат:
+            </p>
           </ListItem>
           <ListItem>
             <div style={{ display: "flex" }}>
-              <Input id="standard-adornment-password" type="date"></Input>
-              <p style={{ marginLeft: "10px", marginRight: "10px" }}> - </p>
-              <Input id="standard-adornment-password" type="date"></Input>
+              <DatePicker
+                sx={{ maxWidth: "150px" }}
+                label="От"
+                slotProps={{ textField: { size: "small" } }}
+              />
+              <p
+                style={{
+                  marginLeft: "10px",
+                  marginRight: "10px",
+                  marginTop: "8px",
+                  marginBottom: "5px",
+                }}
+              >
+                {" "}
+                -{" "}
+              </p>
+              <DatePicker
+                sx={{ maxWidth: "150px" }}
+                label="До"
+                slotProps={{ textField: { size: "small" } }}
+              />
             </div>
           </ListItem>
           <Divider />
           <ListItem>
-            <p>Капсула, которая открывается в пределах этих дат:</p>
+            <p
+              style={{ marginTop: "0px", marginBottom: "0px", padding: "0px" }}
+            >
+              Капсула, которая открывается в пределах этих дат:
+            </p>
           </ListItem>
           <ListItem>
             <div style={{ display: "flex" }}>
-              <Input id="standard-adornment-password" type="date"></Input>
-              <p style={{ marginLeft: "10px", marginRight: "10px" }}> - </p>
-              <Input id="standard-adornment-password" type="date"></Input>
+              <DatePicker
+                sx={{ maxWidth: "150px" }}
+                label="От"
+                slotProps={{ textField: { size: "small" } }}
+              />
+              <p
+                style={{
+                  marginLeft: "10px",
+                  marginRight: "10px",
+                  marginTop: "8px",
+                  marginBottom: "5px",
+                }}
+              >
+                {" "}
+                -{" "}
+              </p>
+              <DatePicker
+                sx={{ maxWidth: "150px" }}
+                label="До"
+                slotProps={{ textField: { size: "small" } }}
+              />
             </div>
           </ListItem>
-          <Divider />
-          <ListItem sx={{ marginTop: "10px" }}>
-            <Autocomplete
-              disablePortal
-              size="small"
-              sx={{ width: "200px", marginRight: "auto" }}
-              options={["имени", "id", "дате создания", "дате открытия"]}
-              renderInput={(params) => (
-                <TextField {...params} label="Поиск по" />
-              )}
-            />
-          </ListItem>
+          <Divider sx={{ marginBottom: "8px" }} />
           <ListItem>
             <TextField
               id="standard-adornment-password"
@@ -201,8 +251,18 @@ function MainInterface() {
               fullWidth
               size="small"
               variant="outlined"
+              placeholder="поиск"
             />
-            <Button>Найти</Button>
+          </ListItem>
+          <ListItem>
+            <Button
+              variant="outlined"
+              fullWidth
+              sx={{ marginLeft: "auto", marginRight: "auto" }}
+              startIcon={<FilterAltOutlinedIcon />}
+            >
+              Применить фильтры
+            </Button>
           </ListItem>
         </List>
       </Drawer>

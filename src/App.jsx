@@ -16,6 +16,10 @@ import Dialog from "./component/DialogComponent";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import "dayjs/locale/ru";
+
 export default function App() {
   const gContext = useContext(globalContext);
   let pageDraw;
@@ -44,5 +48,11 @@ export default function App() {
       </Box>
     );
   }
-  return <ThemeProvider theme={darkTheme}>{pageDraw}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={darkTheme}>
+      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ru">
+        {pageDraw}
+      </LocalizationProvider>
+    </ThemeProvider>
+  );
 }
