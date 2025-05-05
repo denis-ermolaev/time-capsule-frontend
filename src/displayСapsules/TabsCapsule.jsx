@@ -1,25 +1,28 @@
-import { globalContext } from "../const";
+//react
 import { useContext } from "react";
 
+//Material UI
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-
 import Box from "@mui/material/Box";
 
-import EnhancedTable from "./TableCont";
+//context
+import { globalContext } from "../constant/const";
 
-// const [page, setPage] = useState(0);
-// const [rowsPerPage, setRowsPerPage] = useState(10);
-// const [countPagination, setCountPagination] = useState(0);
+//Мои компоненты
+import EnhancedTable from "./TableCapsule";
 
-function TabsCapsule() {
+export default function TabsCapsule() {
+  function handleChangeTab(event, newValue) {
+    gContext.setOpenTabNumber(newValue);
+  }
   const gContext = useContext(globalContext);
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
-          value={gContext.value}
-          onChange={gContext.handleChange}
+          value={gContext.openTabNumber}
+          onChange={handleChangeTab}
           aria-label="basic tabs example"
         >
           <Tab label="Личные капсулы" />
@@ -28,11 +31,11 @@ function TabsCapsule() {
       </Box>
       <div
         role="tabpanel"
-        hidden={gContext.value !== 0}
+        hidden={gContext.openTabNumber !== 0}
         id={`simple-tabpanel-${0}`}
         aria-labelledby={`simple-tab-${0}`}
       >
-        {gContext.value === 0 && (
+        {gContext.openTabNumber === 0 && (
           <Box sx={{ p: 0 }}>
             <div className="CapsuleListContainer">{<EnhancedTable />}</div>
           </Box>
@@ -40,11 +43,11 @@ function TabsCapsule() {
       </div>
       <div
         role="tabpanel"
-        hidden={gContext.value !== 1}
+        hidden={gContext.openTabNumber !== 1}
         id={`simple-tabpanel-${1}`}
         aria-labelledby={`simple-tab-${1}`}
       >
-        {gContext.value === 1 && (
+        {gContext.openTabNumber === 1 && (
           <Box sx={{ p: 0 }}>
             <div className="CapsuleListContainer">{<EnhancedTable />}</div>
           </Box>
@@ -53,5 +56,3 @@ function TabsCapsule() {
     </Box>
   );
 }
-
-export default TabsCapsule;

@@ -1,29 +1,33 @@
-import Dialog from "@mui/material/Dialog";
+//react
+import { useContext, useState } from "react";
 
+//Material UI
+import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useContext, useState } from "react";
-import { globalContext } from "../const";
 import { Stack } from "@mui/material";
 import { Typography } from "@mui/material";
 import Switch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { getCurrentTimeFormat } from "../utils/anyfun";
-
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import dayjs from "dayjs";
+
+//context
+import { globalContext } from "../constant/const";
+
+//utils
+import { getCurrentTimeFormat } from "../utils/time";
 
 const today = dayjs().add(0, "day");
 
 export default function DialogComponent() {
-  const gContext = useContext(globalContext);
-  const [openReg, setOpenReg] = useState(false);
-
+  function handleClose() {
+    gContext.setOpenDialog(false);
+  }
   function tryAuth(event) {
     console.log(event);
     event.preventDefault();
@@ -77,15 +81,19 @@ export default function DialogComponent() {
     const private_status = formJson.public ? false : true;
     postCapsule();
   }
-  if (gContext.open === "login") {
+
+  const gContext = useContext(globalContext);
+  const [openRegistration, setOpenRegistration] = useState(false);
+
+  if (gContext.openDialog === "login") {
     return (
       <Dialog
-        open={Boolean(gContext.open)}
-        onClose={gContext.handleClose}
+        open={Boolean(gContext.openDialog)}
+        onClose={handleClose}
         slotProps={{
           paper: {
             component: "form",
-            onSubmit: openReg ? Registration : tryAuth,
+            onSubmit: openRegistration ? Registration : tryAuth,
           },
         }}
       >
@@ -118,30 +126,30 @@ export default function DialogComponent() {
         <DialogActions>
           <Button
             onClick={() => {
-              gContext.handleClose();
-              setOpenReg(false);
+              handleClose();
+              setOpenRegistration(false);
             }}
           >
             Cancel
           </Button>
           <Button type="submit">
-            {openReg ? "Зарегестрироваться" : "Войти"}
+            {openRegistration ? "Зарегестрироваться" : "Войти"}
           </Button>
-          {openReg ? (
+          {openRegistration ? (
             ""
           ) : (
-            <Button id="reg-button" onClick={() => setOpenReg(true)}>
+            <Button id="reg-button" onClick={() => setOpenRegistration(true)}>
               Перейти к регистрации
             </Button>
           )}
         </DialogActions>
       </Dialog>
     );
-  } else if (gContext.open === "createCapsule") {
+  } else if (gContext.openDialog === "createCapsule") {
     return (
       <Dialog
-        open={Boolean(gContext.open)}
-        onClose={gContext.handleClose}
+        open={Boolean(gContext.openDialog)}
+        onClose={handleClose}
         slotProps={{
           paper: {
             component: "form",
@@ -180,7 +188,7 @@ export default function DialogComponent() {
           </Stack>
         </DialogContent>
         <DialogActions>
-          <Button onClick={gContext.handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Cancel</Button>
           <Button type="submit">Создать капсулу времени</Button>
         </DialogActions>
       </Dialog>

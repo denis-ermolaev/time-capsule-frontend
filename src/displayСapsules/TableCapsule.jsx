@@ -1,4 +1,7 @@
+//react
 import { useContext, useState, useEffect } from "react";
+
+//Material UI
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,27 +12,31 @@ import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Paper from "@mui/material/Paper";
 import { visuallyHidden } from "@mui/utils";
+
+//context
+import { globalContext } from "../constant/const";
+
+//мои модули
 import Pagination from "./Pagination";
-import { globalContext } from "../const";
 
 const headCells = [
   {
     id: "title",
     numeric: false,
     disablePadding: false,
-    label: "Title",
+    label: "Название",
   },
   {
     id: "dateCreate",
     numeric: true,
     disablePadding: false,
-    label: "Date Create",
+    label: "Дата создания",
   },
   {
     id: "dateOpen",
     numeric: true,
     disablePadding: false,
-    label: "Date Open",
+    label: "Дата открытия",
   },
 ];
 
@@ -70,12 +77,12 @@ function EnhancedTableHead(props) {
 
 export default function EnhancedTable() {
   async function getAllCount() {
-    console.log("!gContext.value", !gContext.value);
+    console.log("!gContext.openTabNumber", !gContext.openTabNumber);
     const sigh = order === "asc" ? "" : "-";
     let url;
-    if (gContext.value) {
+    if (gContext.openTabNumber) {
       url = `http://localhost:9000/capsule?&private_ne=${Boolean(
-        gContext.value
+        gContext.openTabNumber
       )}&_sort=${sigh}${orderBy}&_page=${gContext.page + 1}&_per_page=${
         gContext.rowsPerPage
       }`;
@@ -100,7 +107,7 @@ export default function EnhancedTable() {
     getAllCount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    gContext.value,
+    gContext.openTabNumber,
     gContext.page,
     gContext.rowsPerPage,
     order,

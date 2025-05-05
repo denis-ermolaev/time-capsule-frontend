@@ -1,10 +1,21 @@
-import { globalContext } from "../const";
-import { useContext } from "react";
-import Button from "@mui/material/Button";
-import Pagination from "./Pagination";
-import TabsCapsule from "./TabsCapsule";
+//Material UI
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+
+//React
+import { globalContext } from "../constant/const";
+
+//Context
+import { useContext } from "react";
+
+//Табы для отображения капсул
+import TabsCapsule from "../displayСapsules/TabsCapsule";
+
 function MainContent() {
+  function openCreateCapsuleDialog() {
+    gContext.setOpenDialog("createCapsule");
+  }
+
   const gContext = useContext(globalContext);
 
   let pageDraw;
@@ -25,7 +36,7 @@ function MainContent() {
           Очень длинный текст в параграфе, нажав на красную кнопку вы можете
           создать капсулу времени в отдельном меню
         </p>
-        <Button onClick={gContext.handleOpen} variant="contained">
+        <Button onClick={openCreateCapsuleDialog} variant="contained">
           Создать
         </Button>
         <p>Тут может быть очень много текста</p>

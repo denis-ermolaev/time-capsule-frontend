@@ -1,22 +1,26 @@
+//react
 import { useContext } from "react";
-import { globalContext, drawerWidth, AppBar, DrawerHeader } from "../const";
 
+//context
+import { globalContext } from "../constant/const";
+
+//constant
+import { drawerWidth } from "../constant/const";
+import { AppBar, DrawerHeader } from "../constant/constComponent";
+
+//Material UI
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-
 import Divider from "@mui/material/Divider";
-
-import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
@@ -24,18 +28,29 @@ import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 
 function MainInterface() {
-  const gContext = useContext(globalContext);
-  // console.log("MainInterface", gContext.accountLogin.status);
   function logOut() {
     gContext.dispatchAccountLogin({ type: "log out" });
   }
+  function handleDrawerOpen() {
+    gContext.setOpenDrawer(true);
+  }
+
+  function handleDrawerClose() {
+    gContext.setOpenDrawer(false);
+  }
+  function openDialogLogin() {
+    gContext.setOpenDialog("login");
+  }
+  const gContext = useContext(globalContext);
+  // console.log("MainInterface", gContext.accountLogin.status);
+
   return (
     <>
       <CssBaseline />
       <AppBar
         position="fixed"
         open={Boolean(gContext.openDrawer)}
-        className={`navmenu ${gContext.trigger ? "plusopacity" : ""}`}
+        className={`navmenu ${gContext.Scrolltrigger ? "plusopacity" : ""}`}
       >
         <Toolbar>
           <IconButton
@@ -43,7 +58,7 @@ function MainInterface() {
             color="inherit"
             aria-label="open drawer"
             disabled={gContext.accountLogin.status === "Auth" ? false : true}
-            onClick={gContext.handleDrawerOpen}
+            onClick={handleDrawerOpen}
             sx={[
               {
                 mr: 2,
@@ -75,7 +90,7 @@ function MainInterface() {
               </Button>
             </>
           ) : (
-            <Button color="inherit" onClick={gContext.openDialogLogin}>
+            <Button color="inherit" onClick={openDialogLogin}>
               Login
             </Button>
           )}
@@ -104,7 +119,7 @@ function MainInterface() {
           >
             Фильтры
           </Typography>
-          <IconButton onClick={() => gContext.handleDrawerClose()}>
+          <IconButton onClick={handleDrawerClose}>
             <MenuOpenIcon />
           </IconButton>
         </DrawerHeader>

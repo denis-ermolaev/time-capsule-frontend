@@ -1,21 +1,28 @@
-import { globalContext } from "../const";
+//react
 import { useContext } from "react";
 
-import Snackbar from "@mui/material/Snackbar";
+//context
+import { globalContext } from "../constant/const";
 
+//Material UI
+import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
+
 function Notifications() {
   const gContext = useContext(globalContext);
   return (
     <Snackbar
       anchorOrigin={{
-        vertical: gContext.vertical,
-        horizontal: gContext.horizontal,
+        vertical: gContext.alertMessageState.vertical,
+        horizontal: gContext.alertMessageState.horizontal,
       }}
-      open={gContext.openMessage}
+      open={gContext.alertMessageState.openMessage}
       autoHideDuration={5000}
       onClose={gContext.handleCloseState}
-      key={gContext.vertical + gContext.horizontal}
+      key={
+        gContext.alertMessageState.vertical +
+        gContext.alertMessageState.horizontal
+      }
     >
       <Alert
         severity="success"

@@ -1,25 +1,9 @@
-/* eslint-disable react-refresh/only-export-components */
-import { createContext } from "react";
+//Material UI
+import { styled } from "@mui/material/styles";
 import MuiAppBar from "@mui/material/AppBar";
-import { ruRU } from "@mui/material/locale";
-import { styled, ThemeProvider, createTheme } from "@mui/material/styles";
 
-// ContextAPI
-export const globalContext = createContext();
-
-//Настройка тем для материал UI
-export let darkTheme = createTheme(
-  {
-    palette: {
-      mode: "dark",
-      primary: {
-        main: "#FF5733",
-      },
-    },
-  },
-  ruRU
-);
-export const drawerWidth = 400;
+//constant
+import { drawerWidth } from "./const";
 
 export const Main = styled("main", {
   shouldForwardProp: (prop) => prop !== "open",
