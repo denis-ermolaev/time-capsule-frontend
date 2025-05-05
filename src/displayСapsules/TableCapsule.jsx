@@ -1,5 +1,5 @@
 //react
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 //Material UI
 import Box from "@mui/material/Box";
@@ -41,7 +41,7 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-  const { order, orderBy, onRequestSort } = props;
+  const { displayCapsuleOrder, displayCapsuleOrderBy, onRequestSort } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
@@ -54,17 +54,27 @@ function EnhancedTableHead(props) {
             key={headCell.id}
             align={headCell.numeric ? "right" : "left"}
             padding={headCell.disablePadding ? "none" : "normal"}
-            sortDirection={orderBy === headCell.id ? order : false}
+            sortDirection={
+              displayCapsuleOrderBy === headCell.id
+                ? displayCapsuleOrder
+                : false
+            }
           >
             <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : "asc"}
+              active={displayCapsuleOrderBy === headCell.id}
+              direction={
+                displayCapsuleOrderBy === headCell.id
+                  ? displayCapsuleOrder
+                  : "asc"
+              }
               onClick={createSortHandler(headCell.id)}
             >
               {headCell.label}
-              {orderBy === headCell.id ? (
+              {displayCapsuleOrderBy === headCell.id ? (
                 <Box component="span" sx={visuallyHidden}>
-                  {order === "desc" ? "sorted descending" : "sorted ascending"}
+                  {displayCapsuleOrder === "desc"
+                    ? "sorted descending"
+                    : "sorted ascending"}
                 </Box>
               ) : null}
             </TableSortLabel>
@@ -76,48 +86,26 @@ function EnhancedTableHead(props) {
 }
 
 export default function EnhancedTable() {
-  async function getAllCount() {
-    console.log("!gContext.openTabNumber", !gContext.openTabNumber);
-    const sigh = order === "asc" ? "" : "-";
-    let url;
-    if (gContext.openTabNumber) {
-      url = `http://localhost:9000/capsule?&private_ne=${Boolean(
-        gContext.openTabNumber
-      )}&_sort=${sigh}${orderBy}&_page=${gContext.page + 1}&_per_page=${
-        gContext.rowsPerPage
-      }`;
-    } else {
-      url = `http://localhost:9000/capsule?owner=${
-        gContext.accountLogin.userName
-      }&&_sort=${sigh}${orderBy}&_page=${gContext.page + 1}&_per_page=${
-        gContext.rowsPerPage
-      }`;
-    }
-    let res = await fetch(url);
-    res = await res.json();
-    gContext.setCountPagination(res.pages * gContext.rowsPerPage);
-    gContext.setListCapsules(res.data);
-    console.log(res);
-  }
   const gContext = useContext(globalContext);
-  const [order, setOrder] = useState("asc");
-  const [orderBy, setOrderBy] = useState("dateCreate");
+
   //   console.log("order, orderBy", order, orderBy);
   useEffect(() => {
-    getAllCount();
+    gContext.requestAPI.getListCapsule();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     gContext.openTabNumber,
     gContext.page,
     gContext.rowsPerPage,
-    order,
-    orderBy,
+    gContext.displayCapsuleOrder,
+    gContext.displayCapsuleOrderBy,
     gContext.updateCapsuleTabs,
   ]);
   const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
-    setOrderBy(property);
+    const isAsc =
+      gContext.displayCapsuleOrderBy === property &&
+      gContext.displayCapsuleOrder === "asc";
+    gContext.setDisplayCapsuleOrder(isAsc ? "desc" : "asc");
+    gContext.setDisplayCapsuleOrderBy(property);
   };
 
   // Avoid a layout jump when reaching the last page with empty rows.
@@ -136,8 +124,8 @@ export default function EnhancedTable() {
             size="medium"
           >
             <EnhancedTableHead
-              order={order}
-              orderBy={orderBy}
+              displayCapsuleOrder={gContext.displayCapsuleOrder}
+              displayCapsuleOrderBy={gContext.displayCapsuleOrderBy}
               onRequestSort={handleRequestSort}
               rowCount={gContext.ListCapsules.length}
             />
@@ -161,11 +149,20 @@ export default function EnhancedTable() {
                       )
                     }
                   >
-                    <TableCell component="th" id={labelId} scope="row">
+                    <TableCell
+                      sx={{ maxHeight: "26px" }}
+                      component="th"
+                      id={labelId}
+                      scope="row"
+                    >
                       {row.title}
                     </TableCell>
-                    <TableCell align="right">{row.dateCreate}</TableCell>
-                    <TableCell align="right">{row.dateOpen}</TableCell>
+                    <TableCell sx={{ maxHeight: "26px" }} align="right">
+                      {row.dateCreate}
+                    </TableCell>
+                    <TableCell sx={{ maxHeight: "26px" }} align="right">
+                      {row.dateOpen}
+                    </TableCell>
                   </TableRow>
                 );
               })}

@@ -55,7 +55,24 @@ export default function ContextGLOBAL({ children }) {
     disableHysteresis: true,
     threshold: 50,
   });
-  const requestAPI = new RequestAPI({ accountLogin, dispatchAccountLogin });
+  const [displayCapsuleOrder, setDisplayCapsuleOrder] = useState("asc");
+  const [displayCapsuleOrderBy, setDisplayCapsuleOrderBy] =
+    useState("dateCreate");
+  const requestAPI = new RequestAPI({
+    accountLogin,
+    dispatchAccountLogin,
+    updateCapsuleTabs,
+    setUpdateCapsuleTabs,
+    displayCapsuleOrder,
+    setDisplayCapsuleOrder,
+    displayCapsuleOrderBy,
+    setDisplayCapsuleOrderBy,
+    setCountPagination,
+    setListCapsules,
+    openTabNumber,
+    rowsPerPage,
+    page,
+  });
 
   useEffect(() => {
     setInterval(() => setDateNow(getCurrentTimeFormat()), 1000);
@@ -101,6 +118,10 @@ export default function ContextGLOBAL({ children }) {
         setUpdateCapsuleTabs,
         filtrationOpenCapsules,
         setFiltrationOpenCapsules,
+        displayCapsuleOrder,
+        setDisplayCapsuleOrder,
+        displayCapsuleOrderBy,
+        setDisplayCapsuleOrderBy,
       }}
     >
       {children}
