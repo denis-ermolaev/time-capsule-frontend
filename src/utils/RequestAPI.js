@@ -61,7 +61,7 @@ export default class RequestAPI {
   }
   async createCapsule(private_status, title, dateCreate, dateOpen) {
     try {
-      const response = axios.post(`${this.url}/capsule`, {
+      const response = await axios.post(`${this.url}/capsule`, {
         owner: this.state.accountLogin.userName,
         private: private_status,
         title: title,
@@ -70,6 +70,7 @@ export default class RequestAPI {
       });
       this.state.setUpdateCapsuleTabs(!this.state.updateCapsuleTabs);
       console.log(response);
+      return "OK";
     } catch (error) {
       console.error(error);
     }

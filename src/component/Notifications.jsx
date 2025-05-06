@@ -17,19 +17,27 @@ function Notifications() {
         horizontal: gContext.alertMessageState.horizontal,
       }}
       open={gContext.alertMessageState.openMessage}
-      autoHideDuration={5000}
-      onClose={gContext.handleCloseState}
+      autoHideDuration={10000}
+      onClose={() => {
+        gContext.setAlertMessageState((prev) => {
+          return { ...prev, openMessage: false };
+        });
+      }}
       key={
         gContext.alertMessageState.vertical +
         gContext.alertMessageState.horizontal
       }
     >
       <Alert
-        severity="success"
+        severity={gContext.alertMessageState.typeAlert}
         sx={{ width: "100%" }}
-        onClose={gContext.handleCloseState}
+        onClose={() => {
+          gContext.setAlertMessageState((prev) => {
+            return { ...prev, openMessage: false };
+          });
+        }}
       >
-        This is a success Alert.
+        {gContext.alertMessageState.message}
       </Alert>
     </Snackbar>
   );

@@ -42,14 +42,17 @@ export default function ContextGLOBAL({ children }) {
   // TODO: перенести в отдельный useReducer по всем фильтрам
   const [filtrationOpenCapsules, setFiltrationOpenCapsules] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
+  const [dateDialog, setDateDialog] = useState({});
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openTabNumber, setOpenTabNumber] = useState(0);
   //Просто меняем на противоположное для отрисовки
   const [updateCapsuleTabs, setUpdateCapsuleTabs] = useState(false);
   const [alertMessageState, setAlertMessageState] = useState({
     openMessage: false,
-    vertical: "top",
+    vertical: "bottom",
     horizontal: "center",
+    message: "Notifications",
+    typeAlert: "success",
   });
   const Scrolltrigger = useScrollTrigger({
     disableHysteresis: true,
@@ -122,6 +125,8 @@ export default function ContextGLOBAL({ children }) {
         setDisplayCapsuleOrder,
         displayCapsuleOrderBy,
         setDisplayCapsuleOrderBy,
+        dateDialog,
+        setDateDialog,
       }}
     >
       {children}

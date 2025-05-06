@@ -47,8 +47,8 @@ export default function App() {
         <Main open={Boolean(gContext.openDrawer)}>
           <DrawerHeader />
           <MainContent />
-          <Dialog />
           <Notifications />
+          <Dialog />
         </Main>
       </Box>
     );

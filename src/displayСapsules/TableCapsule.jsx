@@ -119,10 +119,19 @@ export default function EnhancedTable() {
       <Paper sx={{ width: "100%", mb: 2 }}>
         <TableContainer>
           <Table
-            sx={{ minWidth: 750 }}
+            sx={{
+              maxWidth: "100%",
+              tableLayout: "fixed",
+              wordWrap: "break-word",
+            }}
             aria-labelledby="tableTitle"
             size="medium"
           >
+            <colgroup>
+              <col style={{ width: "70%" }} />
+              <col style={{ width: "15%" }} />
+              <col style={{ width: "15%" }} />
+            </colgroup>
             <EnhancedTableHead
               displayCapsuleOrder={gContext.displayCapsuleOrder}
               displayCapsuleOrderBy={gContext.displayCapsuleOrderBy}
@@ -139,28 +148,56 @@ export default function EnhancedTable() {
                     role="checkbox"
                     tabIndex={-1}
                     key={row.id}
-                    sx={{ cursor: "pointer" }}
-                    onClick={() =>
-                      console.log(
-                        row.id,
-                        row.title,
-                        row.dateCreate,
-                        row.dateOpen
-                      )
-                    }
+                    sx={{
+                      cursor: "pointer",
+                      height: "27px",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                    onClick={() => {
+                      gContext.setDateDialog({
+                        id: row.id,
+                        title: row.title,
+                        dateCreate: row.dateCreate,
+                        dateOpen: row.dateOpen,
+                      });
+                      gContext.setOpenDialog("openCapsule");
+                    }}
                   >
                     <TableCell
-                      sx={{ maxHeight: "26px" }}
+                      sx={{
+                        height: "27px",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                      }}
                       component="th"
                       id={labelId}
                       scope="row"
                     >
                       {row.title}
                     </TableCell>
-                    <TableCell sx={{ maxHeight: "26px" }} align="right">
+                    <TableCell
+                      sx={{
+                        height: "27px",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                      }}
+                      align="right"
+                    >
                       {row.dateCreate}
                     </TableCell>
-                    <TableCell sx={{ maxHeight: "26px" }} align="right">
+                    <TableCell
+                      sx={{
+                        height: "27px",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                      }}
+                      align="right"
+                    >
                       {row.dateOpen}
                     </TableCell>
                   </TableRow>
@@ -183,8 +220,3 @@ export default function EnhancedTable() {
     </Box>
   );
 }
-
-// const [page, setPage] = useState(0);
-// const [rowsPerPage, setRowsPerPage] = useState(5);
-// const [countPagination, setCountPagination] = useState(0);
-// const [ListCapsules, setListCapsules] = useState([]);

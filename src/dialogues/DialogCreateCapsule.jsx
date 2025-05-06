@@ -33,13 +33,53 @@ export default function DialogCreateCapsule({ handleClose }) {
     const dateCreate = getCurrentTimeFormat();
     const dateOpen =
       formJson.dataOpen.replace("T", " ").replace("-", ".") + ":00";
+    if (
+      dateOpen.includes("mm") |
+      dateOpen.includes("hh") |
+      dateOpen.includes("YYYY") |
+      dateOpen.includes("MM") |
+      dateOpen.includes("DD") |
+      (dateOpen === ":00")
+    ) {
+      gContext.setAlertMessageState.openMessage = true;
+      gContext.setAlertMessageState((prev) => {
+        return {
+          ...prev,
+          openMessage: true,
+          message: "Капсула не создана. Нужно заполнить дату",
+          typeAlert: "warning",
+        };
+      });
+      return undefined;
+    }
     const private_status = formJson.public ? false : true;
-    gContext.requestAPI.createCapsule(
-      private_status,
-      title,
-      dateCreate,
-      dateOpen
-    );
+    gContext.requestAPI
+      .createCapsule(private_status, title, dateCreate, dateOpen)
+      .then((result) => {
+        if (result === "OK") {
+          gContext.setAlertMessageState((prev) => {
+            return {
+              ...prev,
+              openMessage: true,
+              message: "Капсула успешно создана",
+              typeAlert: "success",
+            };
+          });
+          gContext.setOpenDialog(false);
+        } else {
+          gContext.setAlertMessageState((prev) => {
+            return {
+              ...prev,
+              openMessage: true,
+              message: "Ошибка при создании капсулы. Попробуйте ещё раз позже",
+              typeAlert: "error",
+            };
+          });
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
   const gContext = useContext(globalContext);
   return (
@@ -67,6 +107,11 @@ export default function DialogCreateCapsule({ handleClose }) {
           type="text"
           fullWidth
           variant="standard"
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
         />
         <DateTimePicker
           name="dataOpen"
