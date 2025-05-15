@@ -159,8 +159,8 @@ export default function EnhancedTable() {
                       gContext.setDateDialog({
                         id: row.id,
                         title: row.title,
-                        dateCreate: row.dateCreate,
-                        dateOpen: row.dateOpen,
+                        dateCreate: row.date_create,
+                        dateOpen: row.date_open,
                       });
                       gContext.setOpenDialog("openCapsule");
                     }}
@@ -187,7 +187,7 @@ export default function EnhancedTable() {
                       }}
                       align="right"
                     >
-                      {row.dateCreate}
+                      {row.date_create}
                     </TableCell>
                     <TableCell
                       sx={{
@@ -198,7 +198,7 @@ export default function EnhancedTable() {
                       }}
                       align="right"
                     >
-                      {row.dateOpen}
+                      {row.date_open}
                     </TableCell>
                   </TableRow>
                 );

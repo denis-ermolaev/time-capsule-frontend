@@ -26,6 +26,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
+import LogoutIcon from "@mui/icons-material/Logout";
+import LoginIcon from "@mui/icons-material/Login";
 
 function MainInterface() {
   function logOut() {
@@ -85,14 +87,14 @@ function MainInterface() {
           {gContext.accountLogin.status === "Auth" ? (
             <>
               <p>{gContext.accountLogin.userName}</p>
-              <Button color="inherit" onClick={logOut}>
-                Выйти
-              </Button>
+              <IconButton onClick={logOut}>
+                <LogoutIcon />
+              </IconButton>
             </>
           ) : (
-            <Button color="inherit" onClick={openDialogLogin}>
-              Login
-            </Button>
+            <IconButton onClick={openDialogLogin}>
+              <LoginIcon />
+            </IconButton>
           )}
         </Toolbar>
       </AppBar>

@@ -19,9 +19,6 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 //context
 import { globalContext } from "../constant/const";
 
-//utils
-import { getCurrentTimeFormat } from "../utils/time";
-
 const today = dayjs().add(0, "day");
 
 export default function DialogCreateCapsule({ handleClose }) {
@@ -30,9 +27,15 @@ export default function DialogCreateCapsule({ handleClose }) {
     const formData = new FormData(event.currentTarget);
     const formJson = Object.fromEntries(formData.entries());
     const title = formJson.title;
-    const dateCreate = getCurrentTimeFormat();
-    const dateOpen =
-      formJson.dataOpen.replace("T", " ").replace("-", ".") + ":00";
+    const dateOpen = `${formJson.dataOpen.slice(
+      6,
+      10
+    )}-${formJson.dataOpen.slice(3, 5)}-${formJson.dataOpen.slice(
+      0,
+      2
+    )}T${formJson.dataOpen.slice(11, 13)}:${formJson.dataOpen.slice(14, 16)}`;
+    console.log("dateOpen", dateOpen);
+    const text = formJson.text;
     if (
       dateOpen.includes("mm") |
       dateOpen.includes("hh") |
@@ -54,7 +57,7 @@ export default function DialogCreateCapsule({ handleClose }) {
     }
     const private_status = formJson.public ? false : true;
     gContext.requestAPI
-      .createCapsule(private_status, title, dateCreate, dateOpen)
+      .createCapsule(private_status, title, text, dateOpen)
       .then((result) => {
         if (result === "OK") {
           gContext.setAlertMessageState((prev) => {
@@ -104,6 +107,21 @@ export default function DialogCreateCapsule({ handleClose }) {
           id="title"
           name="title"
           label="Введите название капсулы времени"
+          type="text"
+          fullWidth
+          variant="standard"
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
+        />
+        <TextField
+          required
+          margin="dense"
+          id="text"
+          name="text"
+          label="Введите текст для капсулы времени"
           type="text"
           fullWidth
           variant="standard"
