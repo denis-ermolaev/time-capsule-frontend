@@ -19,11 +19,34 @@ export default function DialogLogReg({ handleClose }) {
     const formData = new FormData(event.currentTarget);
     const formJson = Object.fromEntries(formData.entries());
     console.log(formJson);
-    gContext.dispatchAccountLogin({
-      type: "change authentication",
-      userName: formJson.login,
-      password: formJson.password,
-    });
+    gContext.requestAPI
+      .auth(formJson.login, formJson.password)
+      .then((result) => {
+        if (result === "OK") {
+          gContext.setAlertMessageState((prev) => {
+            return {
+              ...prev,
+              openMessage: true,
+              message: "Добро пожаловать!",
+              typeAlert: "success",
+            };
+          });
+          gContext.setOpenDialog(false);
+        } else {
+          gContext.setAlertMessageState((prev) => {
+            return {
+              ...prev,
+              openMessage: true,
+              message:
+                "Ошибка при входе. Проверьте корректность логина и пароля. Или зарегестрируйтесь",
+              typeAlert: "error",
+            };
+          });
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
   function Registration(event) {
     console.log(event);
@@ -31,11 +54,34 @@ export default function DialogLogReg({ handleClose }) {
     const formData = new FormData(event.currentTarget);
     const formJson = Object.fromEntries(formData.entries());
     console.log(formJson);
-    gContext.dispatchAccountLogin({
-      type: "Registration",
-      userName: formJson.login,
-      password: formJson.password,
-    });
+    gContext.requestAPI
+      .registration(formJson.login, formJson.password)
+      .then((result) => {
+        if (result === "OK") {
+          gContext.setAlertMessageState((prev) => {
+            return {
+              ...prev,
+              openMessage: true,
+              message: "Добро пожаловать!",
+              typeAlert: "success",
+            };
+          });
+          gContext.setOpenDialog(false);
+        } else {
+          gContext.setAlertMessageState((prev) => {
+            return {
+              ...prev,
+              openMessage: true,
+              message:
+                "Ошибка при регистрации. Возможно пользователь с таким именем уже существует",
+              typeAlert: "error",
+            };
+          });
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
   const gContext = useContext(globalContext);
   const [openRegistration, setOpenRegistration] = useState(false);

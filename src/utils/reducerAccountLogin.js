@@ -25,13 +25,13 @@ export function reducerAccountLogin(state, action) {
       return {
         ...state,
         status: "Auth",
-        userName: null,
+        userName: action.userName,
         password: null,
         accessToken: action.accessToken,
         refreshToken: action.refreshToken,
       };
     case "change authentication":
-      if (action.userName) {
+      if (action.password) {
         return {
           ...state,
           status: "try",

@@ -1,5 +1,5 @@
 //react
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 //Material UI
 import Box from "@mui/material/Box";
@@ -89,17 +89,7 @@ export default function EnhancedTable() {
   const gContext = useContext(globalContext);
 
   //   console.log("order, orderBy", order, orderBy);
-  useEffect(() => {
-    gContext.requestAPI.getListCapsule();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    gContext.openTabNumber,
-    gContext.page,
-    gContext.rowsPerPage,
-    gContext.displayCapsuleOrder,
-    gContext.displayCapsuleOrderBy,
-    gContext.updateCapsuleTabs,
-  ]);
+
   const handleRequestSort = (event, property) => {
     const isAsc =
       gContext.displayCapsuleOrderBy === property &&
@@ -206,7 +196,7 @@ export default function EnhancedTable() {
               {emptyRows > 0 && (
                 <TableRow
                   style={{
-                    height: 53 * emptyRows,
+                    height: 60 * emptyRows,
                   }}
                 >
                   <TableCell colSpan={6} />

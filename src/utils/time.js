@@ -9,3 +9,12 @@ export function getCurrentTimeFormat() {
   }`;
   return result;
 }
+/**
+ *
+ * @param {string} date - '01.05.2025'
+ */
+export function formatDateForApi(date) {
+  let result = date.replaceAll(".", "-");
+  result = `${result.slice(6, 10)}-${result.slice(3, 5)}-${result.slice(0, 2)}`;
+  return result;
+}

@@ -17,7 +17,7 @@ import {
 //utils
 import { getCurrentTimeFormat } from "../utils/time";
 
-import RequestAPI from "../utils/requestAPI";
+import RequestAPI from "../utils/RequestAPI";
 
 //Просто чтобы не было предупреждения об ошибки
 globalContext;
@@ -30,6 +30,8 @@ export default function ContextGLOBAL({ children }) {
   );
   //Хранилище капсул, их данных из БД
   const [ListCapsules, setListCapsules] = useState([]);
+  //Статистика для графиков
+  const [statistics, setStatistics] = useState([]);
   //Пагинация
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -41,6 +43,13 @@ export default function ContextGLOBAL({ children }) {
   // day week month
   // TODO: перенести в отдельный useReducer по всем фильтрам
   const [filtrationOpenCapsules, setFiltrationOpenCapsules] = useState(null);
+  const [createdFrom, setCreatedFrom] = useState(null);
+  const [createdTo, setCreatedTo] = useState(null);
+  const [opensFrom, setOpensFrom] = useState(null);
+  const [opensTo, setOpensTo] = useState(null);
+  const [search, setSearch] = useState("");
+  const [runFilter, setRunFilter] = useState(false);
+  //Диалоги, Табы, Левый ящик
   const [openDialog, setOpenDialog] = useState(false);
   const [dateDialog, setDateDialog] = useState({});
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -75,6 +84,19 @@ export default function ContextGLOBAL({ children }) {
     openTabNumber,
     rowsPerPage,
     page,
+    statistics,
+    setStatistics,
+    filtrationOpenCapsules,
+    createdFrom,
+    setCreatedFrom,
+    createdTo,
+    setCreatedTo,
+    opensFrom,
+    setOpensFrom,
+    opensTo,
+    setOpensTo,
+    search,
+    setSearch,
   });
 
   useEffect(() => {
@@ -89,8 +111,26 @@ export default function ContextGLOBAL({ children }) {
       requestAPI.auth();
     } else if (accountLogin.status === "Registration") {
       requestAPI.registration();
+    } else if (accountLogin.status === "NotAuth") {
+      requestAPI.getStatistics();
     }
   }, [accountLogin.status]);
+
+  useEffect(() => {
+    if (accountLogin.status === "Auth") {
+      requestAPI.getListCapsule();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    accountLogin.status,
+    runFilter,
+    openTabNumber,
+    page,
+    rowsPerPage,
+    displayCapsuleOrder,
+    displayCapsuleOrderBy,
+    updateCapsuleTabs,
+  ]);
 
   return (
     <globalContext.Provider
@@ -127,6 +167,20 @@ export default function ContextGLOBAL({ children }) {
         setDisplayCapsuleOrderBy,
         dateDialog,
         setDateDialog,
+        statistics,
+        setStatistics,
+        createdFrom,
+        setCreatedFrom,
+        createdTo,
+        setCreatedTo,
+        opensFrom,
+        setOpensFrom,
+        opensTo,
+        setOpensTo,
+        search,
+        setSearch,
+        runFilter,
+        setRunFilter,
       }}
     >
       {children}

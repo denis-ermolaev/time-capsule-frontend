@@ -1,6 +1,8 @@
 //Material UI
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { PieChart } from "@mui/x-charts/PieChart";
+import { BarChart } from "@mui/x-charts/BarChart";
 
 //React
 import { globalContext } from "../constant/const";
@@ -20,12 +22,70 @@ function MainContent() {
 
   let pageDraw;
   if (["NotAuth"].includes(gContext.accountLogin.status)) {
-    pageDraw = (
-      <p>
-        На этом сайте после регестрации вы можете начать создавать капсулы
-        времени.
-      </p>
-    );
+    if (gContext.statistics.сolumnСhartDayCount) {
+      pageDraw = (
+        <>
+          <p>
+            На этом сайте после регестрации вы можете начать создавать капсулы
+            времени.
+          </p>
+          <p> Посмотрите небольшую статистику по использованнию сайта:</p>
+          <br></br>
+          <PieChart
+            hideLegend={true}
+            series={[
+              {
+                data: [
+                  {
+                    id: 0,
+                    value: gContext.statistics.publicCapsules,
+                    label: "Публичные капсулы времени",
+                    color: "#bdb5b5",
+                  },
+                  {
+                    id: 1,
+                    value: gContext.statistics.privateCapsules,
+                    label: "Приватные капсулы времени",
+                    color: "#424040",
+                  },
+                ],
+                highlightScope: { fade: "global", highlight: "item" },
+                faded: {
+                  innerRadius: 30,
+                  additionalRadius: -30,
+                  color: "gray",
+                },
+              },
+            ]}
+            width={200}
+            height={200}
+          />
+          <BarChart
+            height={300}
+            hideLegend={true}
+            series={[
+              {
+                data: Object.values(
+                  gContext.statistics.сolumnСhartDayCount
+                ).reverse(),
+                label: "Созданно капсул в этот день",
+                id: "pvId",
+                stack: "total",
+                color: "#bdb5b5",
+              },
+            ]}
+            xAxis={[
+              {
+                data: Object.keys(
+                  gContext.statistics.сolumnСhartDayCount
+                ).reverse(),
+              },
+            ]}
+            yAxis={[{ width: 50 }]}
+          />
+        </>
+      );
+    }
   } else {
     pageDraw = (
       <>

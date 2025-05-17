@@ -14,6 +14,7 @@ import EnhancedTable from "./TableCapsule";
 
 export default function TabsCapsule() {
   function handleChangeTab(event, newValue) {
+    gContext.setPage(0);
     gContext.setOpenTabNumber(newValue);
   }
   const gContext = useContext(globalContext);

@@ -28,6 +28,7 @@ import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
+import FilterAltOffOutlinedIcon from "@mui/icons-material/FilterAltOffOutlined";
 
 function MainInterface() {
   function logOut() {
@@ -208,6 +209,10 @@ function MainInterface() {
                 sx={{ maxWidth: "150px" }}
                 label="От"
                 slotProps={{ textField: { size: "small" } }}
+                value={gContext.createdFrom}
+                onChange={(newValue) => {
+                  gContext.setCreatedFrom(newValue);
+                }}
               />
               <p
                 style={{
@@ -224,6 +229,10 @@ function MainInterface() {
                 sx={{ maxWidth: "150px" }}
                 label="До"
                 slotProps={{ textField: { size: "small" } }}
+                value={gContext.createdTo}
+                onChange={(newValue) => {
+                  gContext.setCreatedTo(newValue);
+                }}
               />
             </div>
           </ListItem>
@@ -241,6 +250,10 @@ function MainInterface() {
                 sx={{ maxWidth: "150px" }}
                 label="От"
                 slotProps={{ textField: { size: "small" } }}
+                value={gContext.opensFrom}
+                onChange={(newValue) => {
+                  gContext.setOpensFrom(newValue);
+                }}
               />
               <p
                 style={{
@@ -257,6 +270,10 @@ function MainInterface() {
                 sx={{ maxWidth: "150px" }}
                 label="До"
                 slotProps={{ textField: { size: "small" } }}
+                value={gContext.opensTo}
+                onChange={(newValue) => {
+                  gContext.setOpensTo(newValue);
+                }}
               />
             </div>
           </ListItem>
@@ -269,6 +286,10 @@ function MainInterface() {
               size="small"
               variant="outlined"
               placeholder="поиск"
+              value={gContext.search}
+              onChange={(event) => {
+                gContext.setSearch(event.target.value);
+              }}
             />
           </ListItem>
           <ListItem>
@@ -277,8 +298,45 @@ function MainInterface() {
               fullWidth
               sx={{ marginLeft: "auto", marginRight: "auto" }}
               startIcon={<FilterAltOutlinedIcon />}
+              onClick={() => {
+                gContext.setRunFilter((prev) => {
+                  return !prev;
+                });
+                gContext.setUpdateCapsuleTabs((prev) => {
+                  return !prev;
+                });
+              }}
             >
               Применить фильтры
+            </Button>
+          </ListItem>
+          <ListItem>
+            <Button
+              variant="outlined"
+              color="gray"
+              fullWidth
+              sx={{
+                marginLeft: "auto",
+                marginRight: "auto",
+                fontSize: "0.800rem",
+              }}
+              startIcon={<FilterAltOffOutlinedIcon />}
+              onClick={() => {
+                gContext.setFiltrationOpenCapsules(null);
+                gContext.setCreatedFrom(null);
+                gContext.setCreatedTo(null);
+                gContext.setOpensFrom(null);
+                gContext.setOpensTo(null);
+                gContext.setSearch("");
+                gContext.setRunFilter((prev) => {
+                  return !prev;
+                });
+                gContext.setUpdateCapsuleTabs((prev) => {
+                  return !prev;
+                });
+              }}
+            >
+              Сбросить Фильтры
             </Button>
           </ListItem>
         </List>
